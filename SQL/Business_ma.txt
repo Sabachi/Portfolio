@@ -1,0 +1,17 @@
+Ma's Business
+
+Motivation:
+While going through the SQL courses, there were many opportunities to practice queries. A sample of the practice queries is uploaded in the Assignment file. However, I could not find any opportunity to construct a Database (DB) from scratch. Constructing this database is an attempt to understand the complexities experienced while constructing the
+DB for clients. 
+
+Inspiration:
+My mother's (hereafter mentioned as entrepreneur) former business of making and selling leather bags.
+
+Scope:
+Design a DB which provides an overview of the admnistration of an entrepreneur's former business.  
+
+Business:
+An entrepreneur has a business of designing, making and selling leather bags. The owner sells to wholesale organizations.
+3 tailors, 3 sales agent and 1 marketing lead are on the payroll. The founder also works as a tailor. The business has 10 customers. 
+
+Construction of the DB is WORK IN PROGRESS. 

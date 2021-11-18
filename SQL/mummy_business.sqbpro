@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Gebruiker/Documents/Coursera/SQL/portfolio.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1539"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,8:mainCustomer"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Customer" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="89"/><column index="2" value="78"/><column index="3" value="75"/><column index="4" value="60"/><column index="5" value="105"/><column index="6" value="103"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="clients" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="62"/><column index="2" value="78"/><column index="3" value="75"/><column index="4" value="163"/><column index="5" value="154"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">-- Customer table, customer,consumer or client?
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Gebruiker/Documents/GitHub/Portfolio/SQL/Business_ma.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1911"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,8:mainCustomer"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Customer" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="89"/><column index="2" value="78"/><column index="3" value="75"/><column index="4" value="117"/><column index="5" value="105"/><column index="6" value="103"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="clients" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="62"/><column index="2" value="78"/><column index="3" value="75"/><column index="4" value="163"/><column index="5" value="154"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">-- Use the Business_ma database
+
+--Customer table
 Create table Customer (
    Customer_id INT not null Primary Key,
    first_name varchar(800),
@@ -19,7 +21,7 @@ Create table employee (
 	Salary  int,
 	Start_date date
 );
-
+
 
 -- Product details
 Create table products (
@@ -32,17 +34,96 @@ Create table products (
 	foreign KEY (employee_id) references employee(employee_id)
 );
 
-Create table purchase (
-   purchase_id int not null Primary key,
-   employee_id int,
-   product_id int,
-   quanity int,
-   total_paid float,
-   purchase_date DATE,
-   foreign KEY (employee_id) references employee(employee_id)
-   foreign key (product_id) references products(product_id)
-);
+Create table purchase (
+   purchase_id int not null Primary key,
+   employee_id int,
+   product_id int,
+   customer_id int,
+   quanity int,
+   price_per_item float, 
+   purchase_date DATE,
+   foreign KEY (employee_id) references employee(employee_id),
+   foreign key (product_id) references products(product_id),
+   foreign KEY (customer_id) references Customer (customer_id)
+);
+
+Create table financial_details (
+financial_id int primary key,
+purchase_id int,
+revenue float,
+Cost_per_item float,
+transport_cost float,
+utility_cost float,
+foreign KEY (purchase_id) references purchase (purchase_id)
+);
+
+
+Insert INTO employee ( employee_id, first_name, last_name, email, address, Job_role, Salary, Start_date)
+VALUES
+(1, 'Shyam', 'sunder', 'shyam@abc.com', 'Railway colony', 'Tailor', 30000, '2020-05-16'),
+(2, 'Radhika', 'madan', 'radhika@abc.com', 'Gyanmandir colony', 'Tailor', 45000, '2020-05-16'),
+(3, 'Ram', 'Benegal', 'ram@abc.com', 'Opposite railway colony', 'Tailor', 30000, '2020-05-16'),
+(4, 'Aparna', 'sharma', 'aparna@abc.com', 'Ganpati vihar', 'Marketing lead', 35000, '2020-06-16'),
+(5, 'Rohan', 'sharma', 'rohan@abc.com', 'Vidya vihar', 'sales agent', 40000, '2020-07-16'),
+(6, 'Archana', 'raina', 'archana@abc.com', 'adarsh colony', 'sales agent', 40000, '2020-07-15' ),
+(7, 'Meghna', 'sampat', 'meghna@abc.com', 'railway colony', 'sales agent', 40000, '2020-07-20');
+
+Insert into Customer ( Customer_id, first_name, last_name, email_id, phone_number, first_purchase)
+VALUES
+(1, 'Ridha', 'sunder', 'ridha@abc.com', 123456, '2020-10- 01'),
+(2, 'Shyamak', 'bhagwan', 'shyamal@abc.com', 7891011, '2020-10- 10'),
+(3, 'Madhu', 'singh', 'madhu@abc.com', 12131415, '2020-10- 20'),
+(4, 'Seema', 'sinha', 'seema@abc.com', 1617181 , '2020-10- 26'),
+(5, 'Dablu', 'shekhar', 'dablu@abc.com', 191820, '2020-10- 30'),
+(6, 'Moni', 'mani', 'moni@abc.com', 212228, '2020-11- 10'),
+(7, 'Ridhhima', 'Jindhal', 'ridhhima@abc.com', 223345, '2020-11- 19'),
+(8, 'Poonam', 'narayan', 'poonam@abc.com', 90909191, '2020-11- 27'),
+(9, 'Niharika', 'raghav', 'niharika@abc.com', 54545454, '2020-11- 30'),
+(10, 'Roohan', 'soman', 'roohan@abc.com', 6262626, '2020-12- 01');
+
+ Insert or ignore into products (product_id, employee_id, product_name, product_description, price, cost)
+ VALUES
+(1, 1, 'small purse', 'functions like a wallet', 200, 50),
+(2, 3, 'medium purse', 'carries mobile and other essentials', 750, 150 ),
+(3, 2, 'large purse', 'carries laptop and other essentials', 2000, 300);
 
+--alter table purchase
+--drop column price_per_item;
+
+--alter table financial_details
+--add column tax;
+ 
+Insert or ignore into purchase(purchase_id, employee_id, product_id, customer_id,quanity,
+purchase_date)
+VALUES
+(1,5,1,1,5,'2020-10-01'),
+(2,5,2,1,5,'2020-10-13'),
+(3,5,3,1,5,'2020-10-01'),
+(4,6,1,2,3,'2020-10-10'),
+(5,6,2,2,3,'2020-10-10'),
+(6,6,3,2,3,'2020-10-10'),
+(7,7,1,3,7,'2020-10-20'),
+(8,7,2,3,7,'2020-10-20'),
+(9,7,3,3,7,'2020-10-20'),
+(10,5,1,4,2,'2020-10-26'),
+(11,5,2,4,2,'2020-10-26'),
+(12,5,3,4,2,'2020-10-26'),
+(13,6,1,5,4,'2020-10-30'),
+(14,6,2,5,4,'2020-10-30'),
+(15,6,3,5,4,'2020-10-30'),
+(16,7,1,6,3,'2020-11-10'),
+(17,7,2,6,3,'2020-11-10'),
+(18,7,3,6,3,'2020-11-10'),
+(19,5,1,7,10,'2020-11-19'),
+(20,6,2,8,12,'2020-11-27'),
+(21,7,3,9,13,'2020-11-30'),
+(22,5,3,10,22,'2020-12-01');
+
+
+ 
+
+
+
 
 
 
