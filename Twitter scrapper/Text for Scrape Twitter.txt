@@ -1,0 +1,5 @@
+I wrote these codes about 3.5 years ago and since then the tweepy has changed. 
+The objective of the project was a one time download of data for statistical and text analysis.
+Since the objective was achieved, I did not update the codes. Hence, not all the codes run now. 
+
+To provide a glimpse of the excel sheets created, I am also uploading the uncleaned excel file. 
