@@ -54,6 +54,11 @@ for filename, wordslist in biglist.iteritems():
                 my_dict[key] = count
                 dict_density[key] = (float(100*((float(count))/(float(len(wordslist))))))
 
+    #Add word count to the dataframe
+    df = pd.DataFrame.from_dict(my_dict, orient = "index")
+    bigdataframe = pd.concat([bigdataframe, df], axis=1)
+
+    #Add density to the dataframe
     df = pd.DataFrame.from_dict(dict_density, orient = "index")
     bigdataframe = pd.concat([bigdataframe, df], axis=1)
 
