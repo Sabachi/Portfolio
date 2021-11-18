@@ -83,44 +83,47 @@ VALUES
 
  Insert or ignore into products (product_id, employee_id, product_name, product_description, price, cost)
  VALUES
-(1, 1, 'small purse', 'functions like a wallet', 200, 50),
-(2, 3, 'medium purse', 'carries mobile and other essentials', 750, 150 ),
-(3, 2, 'large purse', 'carries laptop and other essentials', 2000, 300);
-
---alter table purchase
---drop column price_per_item;
-
---alter table financial_details
+(1, 1, 'small purse', 'functions like a wallet', 200, 50),
+(2, 3, 'medium purse', 'carries mobile and other essentials', 750, 150 ),
+(3, 2, 'large purse', 'carries laptop and other essentials', 2000, 300);
+
+--alter table purchase
+--drop column price_per_item;
+
+--alter table financial_details
 --add column tax;
  
+Insert or ignore into purchase(purchase_id, employee_id, product_id, customer_id,quanity,
+purchase_date)
+VALUES
+(1,5,1,1,5,'2020-10-01'),
+(2,5,2,1,5,'2020-10-13'),
+(3,5,3,1,5,'2020-10-01'),
+(4,6,1,2,3,'2020-10-10'),
+(5,6,2,2,3,'2020-10-10'),
+(6,6,3,2,3,'2020-10-10'),
+(7,7,1,3,7,'2020-10-20'),
+(8,7,2,3,7,'2020-10-20'),
+(9,7,3,3,7,'2020-10-20'),
+(10,5,1,4,2,'2020-10-26'),
+(11,5,2,4,2,'2020-10-26'),
+(12,5,3,4,2,'2020-10-26'),
+(13,6,1,5,4,'2020-10-30'),
+(14,6,2,5,4,'2020-10-30'),
+(15,6,3,5,4,'2020-10-30'),
+(16,7,1,6,3,'2020-11-10'),
+(17,7,2,6,3,'2020-11-10'),
+(18,7,3,6,3,'2020-11-10'),
+(19,5,1,7,10,'2020-11-19'),
+(20,6,2,8,12,'2020-11-27'),
+(21,7,3,9,13,'2020-11-30'),
+(22,5,3,10,22,'2020-12-01');
+
+
 Insert or ignore into purchase(purchase_id, employee_id, product_id, customer_id,quanity,
 purchase_date)
-VALUES
-(1,5,1,1,5,'2020-10-01'),
-(2,5,2,1,5,'2020-10-13'),
-(3,5,3,1,5,'2020-10-01'),
-(4,6,1,2,3,'2020-10-10'),
-(5,6,2,2,3,'2020-10-10'),
-(6,6,3,2,3,'2020-10-10'),
-(7,7,1,3,7,'2020-10-20'),
-(8,7,2,3,7,'2020-10-20'),
-(9,7,3,3,7,'2020-10-20'),
-(10,5,1,4,2,'2020-10-26'),
-(11,5,2,4,2,'2020-10-26'),
-(12,5,3,4,2,'2020-10-26'),
-(13,6,1,5,4,'2020-10-30'),
-(14,6,2,5,4,'2020-10-30'),
-(15,6,3,5,4,'2020-10-30'),
-(16,7,1,6,3,'2020-11-10'),
-(17,7,2,6,3,'2020-11-10'),
-(18,7,3,6,3,'2020-11-10'),
-(19,5,1,7,10,'2020-11-19'),
-(20,6,2,8,12,'2020-11-27'),
-(21,7,3,9,13,'2020-11-30'),
-(22,5,3,10,22,'2020-12-01');
-
-
- 
+VALUES 
+(23,6,2,10,4,'2020-12-01');
 
 
 
